@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycling Tracking Form</title>
+    <style>
+        body {
+            background-color: #f0f8f0; /* Light green background */
+            font-family: Arial, sans-serif;
+            color: #006400; /* Dark green text */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff; /* White background for the form */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #006400; /* Green title */
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .radio-group {
+            display: flex;
+            align-items: center;
+        }
+        .radio-group label {
+            margin-right: 15px;
+        }
+        .checkbox-group label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .btn {
+            background-color: #006400; /* Dark green button */
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #004d00; /* Darker green on hover */
+        }
+        .success-message {
+            display: none;
+            background-color: #d4edda; /* Light green for success message */
+            color: #155724; /* Dark green text for success message */
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recycling Tracking Form</h1>
+        <form id="recycling-form">
+            <div class="form-group">
+                <label for="recycle-frequency">1. How often do you recycle?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="recycle-frequency" value="monthly" required> Monthly</label>
+                    <label><input type="radio" name="recycle-frequency" value="daily"> Daily</label>
+                    <label><input type="radio" name="recycle-frequency" value="yearly"> Yearly</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="plastic-recycled">2. How much plastic/non-renewable do you recycle in kg?</label>
+                <input type="number" class="form-control" id="plastic-recycled" name="plastic-recycled" required>
+            </div>
+            <div class="form-group">
+                <label for="paper-recycled">3. How much paper/renewable do you recycle in kg?</label>
+                <input type="number" class="form-control" id="paper-recycled" name="paper-recycled" required>
+            </div>
+            <div class="form-group">
+                <label>4. Do you include metals and glasses?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="metals-glasses" value="yes" required> Yes</label>
+                    <label><input type="radio" name="metals-glasses" value="no"> No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>5. Is it easy to recycle in your town?</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="easy-recycle" value="yes"> Yes</label>
+                    <label><input type="checkbox" name="easy-recycle" value="no"> No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="improvements">6. Please tell us what we can improve for more satisfaction (optional)</label>
+                <textarea id="improvements" name="improvements" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+        <div id="success-message" class="success-message">Submitted successfully!</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#recycling-form').on('submit', function(e) {
+                e.preventDefault();
+                // Simulate form submission logic (replace with your actual logic)
+                // Here, we just show the success message and redirect after a short delay
+                $('#success-message').fadeIn().delay(2000).fadeOut(function() {
+                    window.location.href = 'dashboard.html';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

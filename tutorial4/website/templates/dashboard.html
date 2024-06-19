@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Smart Waste Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background:url('https://cleanmanagement.com/wp-content/uploads/2023/10/CleanManagementEnvironmentalGroup-252418-Environmental-Protection-Agency-blogbanner1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        h1 {
+            color: white;
+            font-weight: bolder;
+
+        }
+
+        .container {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .services-box {
+            background-color: rgba(192,192,192,0.3);
+            color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .service-box {
+            background-color: deepskyblue;
+            color: #333;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .service-box:hover {
+            background-color: lightgreen;
+        }
+
+        .notifications {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .notification-icon {
+            background-color: #ffffff;
+            color: #333;
+            border-radius: 50%;
+            margin: 10px;
+            padding: 20px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .notification-icon:hover {
+            background-color: #f1f1f1;
+        }
+
+        .notification-icon .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/schedule">Schedule</a></li>
+        <li><a href="/track">Track</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/admin_dashboard">Admin Dashboard</a></li>
+    </ul>
+    <ul>
+        {% for service in services %}
+        <li>{{ service.name }} - {{ service.description }}</li>
+        {% endfor %}
+    </ul>
+<div class="container">
+    <h1>Welcome to the Dashboard</h1>
+    <div class="services-box">
+        <div class="services">
+            <div class="service-box" onclick="location.href='schedule.html'">
+                <i class="fas fa-calendar-alt fa-2x"></i>
+                <p>Schedule</p>
+            </div>
+            <div class="service-box" onclick="location.href='track.html'">
+                <i class="fas fa-recycle fa-2x"></i>
+                <p>Recycling</p>
+            </div>
+            <div class="service-box">
+                <i class="fas fa-truck fa-2x"></i>
+                <p>Collection</p>
+            </div>
+            <div class="service-box">
+                <i class="fas fa-tachometer-alt fa-2x"></i>
+                <p>Dashboard</p>
+            </div>
+            <div class="service-box">
+                <i class="fas fa-comments fa-2x"></i>
+                <p>Feedback</p>
+            </div>
+        </div>
+    </div>
+    <div class="notifications">
+        <div class="notification-icon">
+            <i class="fas fa-bell fa-2x"></i>
+            <span class="badge">3</span>
+        </div>
+        <div class="notification-icon">
+            <i class="fas fa-envelope fa-2x"></i>
+            <span class="badge">5</span>
+        </div>
+        <div class="notification-icon">
+            <i class="fas fa-phone fa-2x"></i>
+            <span class="badge">2</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Show notifications popup after login
+        setTimeout(function() {
+            alert('You have new notifications!');
+        }, 1000);
+    });
+</script>
+
+</body>
+</html>

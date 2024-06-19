@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Waste Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background: url('https://cleanmanagement.com/wp-content/uploads/2023/10/CleanManagementEnvironmentalGroup-252418-Environmental-Protection-Agency-blogbanner1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #auth-container {
+            background: rgba(255, 255, 255, 0.8);
+            color: #333333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        .form-group label {
+            color: #007bff;
+        }
+
+        .btn-signup {
+            background-color: green;
+            border-color: #28a745;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+<div id="auth-container">
+    <h1>Welcome to Smart Waste Management System</h1>
+    <div id="welcome-screen" class="text-center">
+        <button id="show-login" class="btn btn-primary btn-block">Login</button>
+        <button id="show-signup" class="btn btn-secondary btn-block">Sign Up</button>
+
+
+    </div>
+
+    <div id="login-form" class="form-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="login-email">Email address:</label>
+                <input type="email" class="form-control" id="login-email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password:</label>
+                <input type="password" class="form-control" id="login-password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+    </div>
+
+    <div id="signup-form" class="form-container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="signup-name">Full Name:</label>
+                <input type="text" class="form-control" id="signup-name" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-email">Email address:</label>
+                <input type="email" class="form-control" id="signup-email" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Password:</label>
+                <input type="password" class="form-control" id="signup-password" required>
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                    Your password must be at least 8 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Retype Password:</label>
+                <input type="password" class="form-control" id="confirm-password" required>
+            </div>
+            <button type="submit" class="btn btn-signup btn-block">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Show login form
+        $('#show-login').on('click', function() {
+            $('#welcome-screen').hide();
+            $('#signup-form').removeClass('active');
+            $('#login-form').addClass('active');
+        });
+
+        // Show signup form
+        $('#show-signup').on('click', function() {
+            $('#welcome-screen').hide();
+            $('#login-form').removeClass('active');
+            $('#signup-form').addClass('active');
+        });
+
+        // Handle signup form submission
+        $('#signupForm').on('submit', function(e) {
+            e.preventDefault();
+            var name = $('#signup-name').val();
+            var email = $('#signup-email').val();
+            var password = $('#signup-password').val();
+            var confirmPassword = $('#confirm-password').val();
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // Check password strength
+            // var passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            // if (!passwordPattern.test(password)) {
+            //     alert('Password must be at least 8 characters long and contain both letters and numbers.');
+            //     return;
+            // }
+
+            // Simulate successful signup
+            alert('Sign up successful! Please log in.');
+            
+            // Clear form fields
+            $('#signup-name').val('');
+            $('#signup-email').val('');
+            $('#signup-password').val('');
+            $('#confirm-password').val('');
+            
+            // Show login form
+            $('#signup-form').removeClass('active');
+            $('#login-form').addClass('active');
+        });
+
+        // Handle login form submission
+        $('#loginForm').on('submit', function(e) {
+            e.preventDefault();
+            var email = $('#login-email').val();
+            var password = $('#login-password').val();
+            
+            // Simulate successful login
+            alert('Login successful!');
+            
+            // Redirect to dashboard (change this URL to your dashboard URL)
+            window.location.href = 'dashboard.html';
+        });
+    });
+</script>
+
+</body>
+</html>
